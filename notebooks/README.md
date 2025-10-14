@@ -12,11 +12,11 @@ Because those are highly correlated according to the chi squre test or some patt
 - quality_group
 - payment
 - region
-- permit
 - payment_type
 - quantity_group
 - construction_year
 - gps_height
+- population
 
 
 ### columns to be output
@@ -58,6 +58,7 @@ Because those are highly correlated according to the chi squre test or some patt
 Because correlation can be high according to the chi square test, but sounds like not so important.
 - public_meeting
 - scheme_management
+- permit
 
 ### dropping missing values
 - drop rows if construction_year == 0 (construction_year == 0 if population == 0, so simply data isn't recorded).
