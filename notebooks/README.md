@@ -7,13 +7,12 @@ This folder contains any jupyter notebooks.
 
 ### columns to be input
 Because those are highly correlated according to the chi squre test or some patttern was observed with status and region
-- source
-- management
-- quality_group
-- payment
+- quantity_group
 - region
 - payment_type
-- quantity_group
+- extraction_type_class
+- management
+- quality_group
 - construction_year
 - gps_height
 - population
@@ -24,20 +23,16 @@ Because those are highly correlated according to the chi squre test or some patt
 
 
 ### Columns alernatively used when the model's performance isn't enough. 
-- payment
-- extraction type
-- management_group
+- source or waterpoint_type_group (alternative of extraction_type because those are highly correlated with extraction_type)
+- basin or longitude & latutude (alternative of region because those are highly correlated with region)
+- payment 
 - water_quality
 - quantity
-- source_type
-- source_class
-- waterpoint_type
-- waterpoint_type_group
-- longitude 
-- latitude
+
 
 
 ### columns to dropped
+- basin (highly associate wuth region, so we don't need the same information)
 - date_recorded (too same values)
 - funder (too unique values)
 - installer (too unique values)
@@ -51,12 +46,12 @@ Because those are highly correlated according to the chi squre test or some patt
 - distirct_code (region is enough, also we can encode region into numerical data, so not must-have)
 - id
 - num_private (we can't explain what it is)
+- management_group
 
 
 
 ### Don't know yet
 Because correlation can be high according to the chi square test, but sounds like not so important.
-- public_meeting
 - scheme_management
 - permit
 
