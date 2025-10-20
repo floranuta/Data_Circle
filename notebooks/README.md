@@ -5,7 +5,19 @@ This folder contains any jupyter notebooks.
 
 ## Analysis report
 
-### columns to be input
+My proposal is as below:  
+1. First attempt: using the following columns and see the model performance. Click [here](#columns-to-be-used) to see the columns to be used.
+2. Second attempt: Using source in stead of "source" and see the model performance. Click [here](#columns-alernatively-used) to see more details.
+3. Third attempt: Add a column "construction_year" and remove the rows where the value is zero. And then see the model performance.
+4. Forth attempt: Add a column "construction_year" and fill the zeros with alternative values. And see the model performance. Click [here](#filling-missing-values) to see how to fill the zero values.
+
+Reason why I propose this attempts:  
+- If the data is complete and no null values, the model could learn well even though the data size is small.
+- Functionality is highly correlated with region, so the model could lean well without pump age.
+- Columns "source", "extraction_type_class", and "waterpoint_type_group" are correlated each other, so using one of them would be enoug. I assume resource is more correlated with region and overlapped information might be redundant, so I'd try with Wextraction_type_class" first.
+
+
+### Columns to be used
 Because those are highly correlated according to the chi squre test or some patttern was observed with status and region
 - quantity_group
 - region
@@ -13,16 +25,12 @@ Because those are highly correlated according to the chi squre test or some patt
 - extraction_type_class
 - management
 - quality_group
-- construction_year
 - gps_height
-- population
-
-
-### columns to be output
 - status_group
 
 
-### Columns alernatively used when the model's performance isn't enough. 
+
+### Columns alernatively used 
 - source or waterpoint_type_group (alternative of extraction_type because those are highly correlated with extraction_type)
 - basin or longitude & latutude (alternative of region because those are highly correlated with region)
 - payment 
@@ -31,7 +39,9 @@ Because those are highly correlated according to the chi squre test or some patt
 
 
 
-### columns to dropped
+### Columns to dropped
+- constrction_year
+- population
 - basin (highly associate wuth region, so we don't need the same information)
 - date_recorded (too same values)
 - funder (too unique values)
@@ -49,15 +59,6 @@ Because those are highly correlated according to the chi squre test or some patt
 - management_group
 
 
-
-### Don't know yet
-Because correlation can be high according to the chi square test, but sounds like not so important.
-- scheme_management
-- permit
-
-### dropping missing values
-- drop rows if construction_year == 0 (construction_year == 0 if population == 0, so simply data isn't recorded).
-If this infleunces the model performance, the following missing value filling scheme can be applied.
 
 ### Filling missing values
 - construction_year:
