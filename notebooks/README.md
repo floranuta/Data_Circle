@@ -3,18 +3,22 @@
 This folder contains any jupyter notebooks.
 
 
-## Analysis report
+## Data cleaning proposal
 
-My proposal is as below:  
+My data cleaning proposal is as below:    
+- First of all, **remove invalid data**, meaning remove the row if "date_recorded" - "construction_year" < 0.  
+Then, the following attempt can be apply while sseing the model performance.  
+
 1. First attempt: using the following columns and see the model performance. Click [here](#columns-to-be-used) to see the columns to be used.
 2. Second attempt: Using source in stead of "source" and see the model performance. Click [here](#columns-alernatively-used) to see more details.
 3. Third attempt: Add a column "construction_year" and remove the rows where the value is zero. And then see the model performance.
 4. Forth attempt: Add a column "construction_year" and fill the zeros with alternative values. And see the model performance. Click [here](#filling-missing-values) to see how to fill the zero values.
 
-Reason why I propose this attempts:  
+Reason why I propose this attempts:   
 - If the data is complete and no null values, the model could learn well even though the data size is small.
-- Functionality is highly correlated with region, so the model could lean well without pump age.
-- Columns "source", "extraction_type_class", and "waterpoint_type_group" are correlated each other, so using one of them would be enoug. I assume resource is more correlated with region and overlapped information might be redundant, so I'd try with Wextraction_type_class" first.
+- Functionality is highly correlated with region, so the model could learn well without pump age.
+- Filling zero values in "construction_year" could change the data distribution, so trying with low risk strategy can be efficient. 
+- Columns "source", "extraction_type_class", and "waterpoint_type_group" are correlated each other, so using one of them would be enough. I assume "source" is more correlated with region then other two columns and overlapped information might be redundant, so I'd try with "extraction_type_class" first.
 
 
 ### Columns to be used
