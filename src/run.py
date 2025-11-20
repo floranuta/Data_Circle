@@ -4,6 +4,7 @@ from sampler import oversample
 from sklearn.model_selection import KFold
 from sklearn.metrics import accuracy_score
 
+# import mlflow
 
 def run(data: pd.DataFrame,
         is_oversample: bool,
