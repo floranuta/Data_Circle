@@ -1,6 +1,7 @@
 import pandas as pd
 import config as c
 import logging
+from sklearn.base import BaseEstimator, TransformerMixin
 
 # Basic logging configuration — in real apps you can tune this or move it to main.py
 logging.basicConfig(
@@ -13,7 +14,8 @@ class DataCleaner:
     
     def __init__(self) -> pd.DataFrame:
         
-        self.features = c.FEATURES
+        self.features = ["id", "quantity_group", "region", "payment_type", "extraction_type_class", "management", "quality_group", "pump_age"]
+        self.target = "status_group"
         
 
     def extract_recorded_year(self, dataframe: pd.DataFrame) -> pd.DataFrame:
@@ -63,8 +65,14 @@ class DataCleaner:
     
     def extract_feature(self, dataframe: pd.DataFrame) -> pd.DataFrame:
         """ extract necessary features"""
-                
-        return dataframe[self.features]
+        
+        if self.target in dataframe.columns:
+            extract_columns = self.features
+            extract_columns.append(self.target)
+            return dataframe[extract_columns]
+        
+        else:
+            return dataframe[self.features]
     
     
         
