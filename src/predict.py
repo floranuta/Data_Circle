@@ -6,10 +6,17 @@ TARGET_MAPPING = {"non functional": 0, "functional needs repair": 1, "functional
 
 def load_checkpoint():
     # load
-    with open('../output/modeltest.pkl', 'rb') as f:
-        pipeline = pickle.load(f)
+    with open('../output/checkpoint/1.pkl', 'rb') as f:
+        checkpoint = pickle.load(f)
     
-    return pipeline
+    return checkpoint
+
+def load_preprocessor():
+    # load
+    with open('../output/checkpoint/preprocessor.pkl', 'rb') as f:
+        preprocessor = pickle.load(f)
+    
+    return preprocessor
 
 
 def format_prediction(prediction: np.array, prediction_proba: np.array):
@@ -33,12 +40,15 @@ def format_prediction(prediction: np.array, prediction_proba: np.array):
 
 def predict(input_data: pd.DataFrame):
     
-    pipeline = load_checkpoint()
+    checkpoint = load_checkpoint()
+    preprocessor = load_preprocessor()
+    
+    input_data = preprocessor.fit_transform(input_data)
     
     # predict status
-    prediction = pipeline.predict(input_data)
+    prediction = checkpoint.predict(input_data)
     
     # prediction probability
-    prediction_proba = pipeline.predict_proba(input_data)
+    prediction_proba = checkpoint.predict_proba(input_data)
     
     return format_prediction(prediction, prediction_proba)
