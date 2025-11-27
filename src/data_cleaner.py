@@ -21,10 +21,18 @@ class DataCleaner:
     def extract_recorded_year(self, dataframe: pd.DataFrame) -> pd.DataFrame:
         """extract year from column recorded_year"""
         
-        dataframe["date_recorded"] = pd.to_datetime(dataframe['date_recorded'])
-        
-        # extract year from date_recorded
-        dataframe["year_recorded"] = pd.DatetimeIndex(dataframe["date_recorded"]).year
+        try:
+            
+            dataframe["date_recorded"] = pd.to_datetime(dataframe['date_recorded'], format="%d/%m/%Y")
+            dataframe["year_recorded"] = pd.DatetimeIndex(dataframe["date_recorded"]).year
+            
+        except:
+            
+            # extract year from date_recorded
+            dataframe["date_recorded"] = pd.to_datetime(dataframe['date_recorded'], format="%Y-%m-%d")
+            dataframe["year_recorded"] = pd.DatetimeIndex(dataframe["date_recorded"]).year
+            
+            
         
         return dataframe
     
@@ -33,7 +41,7 @@ class DataCleaner:
         """fill zero value with mean in a column extraction_year"""
         
         temp_df = dataframe[(dataframe["construction_year"] > 0)]
-        mean_consturuction_year = temp_df["construction_year"].mean()
+        mean_consturuction_year = temp_df["construction_year"].median()
         
         dataframe["construction_year"] = dataframe['construction_year'].replace(0, mean_consturuction_year)
         
