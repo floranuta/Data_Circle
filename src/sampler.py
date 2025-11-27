@@ -2,7 +2,9 @@ import numpy as np
 from imblearn.over_sampling import RandomOverSampler
 from imblearn.over_sampling import SMOTE
 from imblearn.over_sampling import ADASYN
-import config as c 
+# import config as c 
+
+TARGET_MAPPING = {"non functional": 0, "functional needs repair": 1, "functional": 2}
 
 def oversample(X: np.array, y: np.array, method: str) -> np.array:
     """ Randomly oversample minority class """
@@ -29,8 +31,8 @@ def oversample(X: np.array, y: np.array, method: str) -> np.array:
 
     # Printing number of samples in each class after Over-Sampling
     print("Before Oversampling -> After Oversampling")
-    print(f"functional:  {np.count_nonzero(y == c.TARGET_MAPPING["functional"])} -> {np.count_nonzero(y_Over == c.TARGET_MAPPING["functional"])}")
-    print(f"non functional: {np.count_nonzero(y == c.TARGET_MAPPING["non functional"])} -> {np.count_nonzero(y_Over == c.TARGET_MAPPING["non functional"])}")
-    print(f"functional needs repair: {np.count_nonzero(y == c.TARGET_MAPPING["functional needs repair"])} -> {np.count_nonzero(y_Over == c.TARGET_MAPPING["functional needs repair"])}")
+    print(f"functional:  {np.count_nonzero(y == TARGET_MAPPING["functional"])} -> {np.count_nonzero(y_Over == TARGET_MAPPING["functional"])}")
+    print(f"non functional: {np.count_nonzero(y == TARGET_MAPPING["non functional"])} -> {np.count_nonzero(y_Over == TARGET_MAPPING["non functional"])}")
+    print(f"functional needs repair: {np.count_nonzero(y == TARGET_MAPPING["functional needs repair"])} -> {np.count_nonzero(y_Over == TARGET_MAPPING["functional needs repair"])}")
 
     return X_Over, y_Over
