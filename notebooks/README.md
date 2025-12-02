@@ -1,6 +1,22 @@
-## Notebooks
+# Model building  
+You can find checkpoint from [here](https://drive.google.com/drive/folders/1CNsEezy4aLCS3m3BltQ6XWlVlwGkoR6t?usp=drive_link)  
 
-This folder contains any jupyter notebooks.
+## Feature selection
++ Used features (In the order by importances i.e. mean of weights for each column)
+    + pump_age
+    + gps_height (added to differentiate between non_funtional and functional)
+    + quantity_group
+    + extraction_type_class
+    + payment_type (added to differentiate between non_funtional and others)
+    + basin (added to differentiate between funtional and others)
+    + source (added to differentiate between funtional and others)
+    + region
++ Attmpts by other features
+    + Installer was stong association to differntiate between majority (i.e. functional and non_functional) and minority (functional_need_repair) class according to Cremer'V test, but it changes the accuracy by only 1 %.
+
+
+
+
 
 
 ## Data cleaning proposal
