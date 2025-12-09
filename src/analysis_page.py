@@ -77,7 +77,8 @@ nonfunctional_pct = 0 if total_pumps==0 else round(nonfunctional/total_pumps*100
 repair_pct = 0 if total_pumps==0 else round(needs_repair/total_pumps*100,2)
 
 col1.metric("Total pumps", f"{total_pumps:,}")
-col2.metric("Functional %", f"{functional_pct}%", delta=f"{functional - (total_pumps-functional):,}")
+# col2.metric("Functional %", f"{functional_pct}%", delta=f"{functional - (total_pumps-functional):,}")
+col2.metric("Functional %", f"{functional_pct}%")
 col3.metric("Non functional %", f"{nonfunctional_pct}%")
 col4.metric("Needs repair %", f"{repair_pct}%")
 
