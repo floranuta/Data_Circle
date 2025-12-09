@@ -5,10 +5,8 @@ This proejct develops machine learning models to predict the functionality statu
 
 This project addresses a critical infrastructure challenge: identifying which water pumps are functional, which need repairs, and which are non-functional to improve maintenance operations and ensure communities have access to clean water.
 
----
-
-## Competition Link
-[DrivenData - Pump it Up: Data Mining the Water Table](https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/)
+## Project Summary 
+**Summary of our work here: [Final presentation](https://github.com/floranuta/Data_Circle/blob/main/docs/Final%20Presentation.pdf/)**
 
 ---
 
@@ -26,7 +24,7 @@ This project addresses a critical infrastructure challenge: identifying which wa
 ## Data Description
 
 ### Dataset Source
-The data comes from **Taarifa** and the **Tanzanian Ministry of Water**, which aggregates information about water points across Tanzania.
+The data comes from **Taarifa** and the **Tanzanian Ministry of Water**, which aggregates information about water points across Tanzania. Data is avaialable here: [DrivenData - Pump it Up: Data Mining the Water Table](https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/)
 
 ### Features Overview
 The dataset contains **40+ columns** representing:
