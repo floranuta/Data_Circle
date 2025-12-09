@@ -6,4 +6,5 @@ plotly
 matplotlib
 seaborn
 sqlalchemy
-sqlite3 
+scikit-learn
+imbalanced-learn
