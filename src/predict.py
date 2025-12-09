@@ -6,7 +6,7 @@ TARGET_MAPPING = {"non functional": 0, "functional needs repair": 1, "functional
 
 def load_checkpoint():
     # load
-    with open('../output/checkpoint/5_source_basin_payment_gps.pkl', 'rb') as f:
+    with open('checkpoint/checkpoint.pkl', 'rb') as f:
         checkpoint = pickle.load(f)
     
     return checkpoint
